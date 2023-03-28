@@ -1,36 +1,24 @@
 import pandas as pd
 import numpy as np
-import matplotlib as mp
-import matplotlib.pyplot as plt
 import datetime
-import yfinance as yf
-import pandas_datareader as web
 import requests
-import time
 import io
+import time
 import mplfinance as mpl
-
-ontem=datetime.datetime.today()
-
-title='PETR4.SA'
-enddate = int(datetime.datetime.timestamp(datetime.datetime(ontem.year,ontem.month,ontem.day-1,ontem.hour,ontem.minute,ontem.second))) - time.timezone
-startdate= int(datetime.datetime.timestamp(datetime.datetime(ontem.year-1,ontem.month,ontem.day-1,ontem.hour,ontem.minute,ontem.second))) - time.timezone
-#https://query1.finance.yahoo.com/v7/finance/download/BBDC4.SA?period1=1647975607&period2=1679511607&interval=1d&events=history&includeAdjustedClose=true
-urlyahoo=f'https://query1.finance.yahoo.com/v7/finance/download/{title}?period1={startdate}&period2={enddate}&interval=1d&events=history&includeAdjustedClose=true'
 
 def getdata(papel,start=None,end=None):
 
     e = pd.to_datetime(end)
     s = pd.to_datetime(start)
-    ontem = datetime.datetime.today()
+    now = datetime.datetime.today()
 
     if(end==None):
-        enddate = int(datetime.datetime.timestamp(datetime.datetime(ontem.year, ontem.month, ontem.day - 1, ontem.hour, ontem.minute,ontem.second))) - time.timezone
+        enddate = int(datetime.datetime.timestamp(datetime.datetime(now.year, now.month, now.day - 1, now.hour, now.minute,now.second))) - time.timezone
     else:
         enddate = int(datetime.datetime.timestamp(datetime.datetime(e.year, e.month, e.day - 1, e.hour, e.minute,e.second))) - time.timezone
 
     if(start==None):
-        startdate = int(datetime.datetime.timestamp(datetime.datetime(ontem.year - 1, ontem.month, ontem.day - 1, ontem.hour, ontem.minute,ontem.second))) - time.timezone
+        startdate = int(datetime.datetime.timestamp(datetime.datetime(now.year - 1, now.month, now.day - 1, now.hour, now.minute,now.second))) - time.timezone
     else:
         startdate = int(datetime.datetime.timestamp(datetime.datetime(s.year - 1, s.month, s.day - 1, s.hour, s.minute,s.second))) - time.timezone
 
@@ -53,11 +41,7 @@ def getcandle(papel, start=None, end=None):
     x = mpl.show()
     return x
 
-carteira=['PETR4.SA','EGIE3.SA','CPLE6.SA','TRPL4.SA']
-figures=['PETR4.SA','EGIE3.SA','CPLE6.SA','TRPL4.SA']
-
-getcandle('BBDC4.SA')
-mpl.show()
+getcandle('PETR4.SA')
 
 
 
