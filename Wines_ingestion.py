@@ -44,7 +44,7 @@ df = pd.DataFrame({'Disponibilidade':disp,
 
 
 account_url = "https://aserzin.blob.core.windows.net/"
-token = "ioLV70V8qERvjBdpEEKK9x4xlXOMFDai2bCeu91DW8/Cu4OamUq5l2GZGxiUuxUTvxoX0kplB6rX+AStF2NrkA=="
+token = "xxxxx"
 container = "ingestion/wines"
 blobname = "wines_ingestion.csv"
 
@@ -53,7 +53,7 @@ blob_client = container_client.get_blob_client(blob=blobname)
 
 pandablob.df_to_blob(df,blob_client,overwrite=True)
 #DefaultEndpointsProtocol=https;AccountName=aserzin;
-#AccountKey=ioLV70V8qERvjBdpEEKK9x4xlXOMFDai2bCeu91DW8/Cu4OamUq5l2GZGxiUuxUTvxoX0kplB6rX+AStF2NrkA==;
+
 #EndpointSuffix=core.windows.net
 """
 print(disp)
